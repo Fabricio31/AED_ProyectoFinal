@@ -1,0 +1,164 @@
+package guis;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import arregloSocio.ArregloSocios;
+
+import javax.swing.JTextPane;
+import javax.swing.JTable;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class GUISocio extends JDialog implements ActionListener {
+	private JTable tblMostrar;
+	private JLabel lblCodigo;
+	private JLabel lblNombre;
+	private JLabel lblApellido;
+	private JLabel lblDni;
+	private JLabel lblTelefono;
+	private JTextField txtCodigo;
+	private JTextField txtNombre;
+	private JTextField txtApellido;
+	private JTextField txtDNI;
+	private JTextField txtTelefono;
+	private JButton btnAceptar;
+	private JButton btnModificar;
+	private JButton btnConsultar;
+	private JButton btnEliminar;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			GUISocio dialog = new GUISocio();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public GUISocio() {
+		setBounds(100, 100, 621, 418);
+		getContentPane().setLayout(null);
+		
+		tblMostrar = new JTable();
+		tblMostrar.setBounds(10, 191, 585, 177);
+		getContentPane().add(tblMostrar);
+		
+		lblCodigo = new JLabel("Codigo");
+		lblCodigo.setBounds(10, 11, 64, 23);
+		getContentPane().add(lblCodigo);
+		
+		lblNombre = new JLabel("Nombre");
+		lblNombre.setBounds(10, 45, 64, 23);
+		getContentPane().add(lblNombre);
+		
+		lblApellido = new JLabel("Apellido");
+		lblApellido.setBounds(10, 79, 64, 23);
+		getContentPane().add(lblApellido);
+		
+		lblDni = new JLabel("DNI");
+		lblDni.setBounds(10, 113, 64, 23);
+		getContentPane().add(lblDni);
+		
+		lblTelefono = new JLabel("Telefono");
+		lblTelefono.setBounds(10, 147, 64, 23);
+		getContentPane().add(lblTelefono);
+		
+		txtCodigo = new JTextField();
+		txtCodigo.setBounds(106, 12, 86, 20);
+		getContentPane().add(txtCodigo);
+		txtCodigo.setColumns(10);
+		
+		txtNombre = new JTextField();
+		txtNombre.setBounds(106, 46, 86, 20);
+		txtNombre.setColumns(10);
+		getContentPane().add(txtNombre);
+		
+		txtApellido = new JTextField();
+		txtApellido.setBounds(106, 80, 86, 20);
+		txtApellido.setColumns(10);
+		getContentPane().add(txtApellido);
+		
+		txtDNI = new JTextField();
+		txtDNI.setBounds(106, 114, 86, 20);
+		txtDNI.setColumns(10);
+		getContentPane().add(txtDNI);
+		
+		txtTelefono = new JTextField();
+		txtTelefono.setBounds(106, 148, 86, 20);
+		txtTelefono.setColumns(10);
+		getContentPane().add(txtTelefono);
+		
+		btnAceptar = new JButton("Adicionar");
+		btnAceptar.setBounds(235, 11, 89, 23);
+		btnAceptar.addActionListener(this);
+		getContentPane().add(btnAceptar);
+		
+		btnModificar = new JButton("Modificar");
+		btnModificar.setBounds(493, 11, 89, 23);
+		btnModificar.addActionListener(this);
+		getContentPane().add(btnModificar);
+		
+		btnConsultar = new JButton("Consultar");
+		btnConsultar.setBounds(493, 45, 89, 23);
+		btnConsultar.addActionListener(this);
+		getContentPane().add(btnConsultar);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBounds(493, 79, 89, 23);
+		btnEliminar.addActionListener(this);
+		getContentPane().add(btnEliminar);
+	}
+	public void actionPerformed(ActionEvent arg0) {
+		if (arg0.getSource() == btnEliminar) {
+			actionPerformedBtnEliminar(arg0);
+		}
+		if (arg0.getSource() == btnConsultar) {
+			actionPerformedBtnConsultar(arg0);
+		}
+		if (arg0.getSource() == btnModificar) {
+			actionPerformedBtnModificar(arg0);
+		}
+		if (arg0.getSource() == btnAceptar) {
+			actionPerformedBtnAceptar(arg0);
+		}
+	}
+	ArregloSocios aa=new ArregloSocios();
+	protected void actionPerformedBtnAceptar(ActionEvent arg0) {
+	}
+	protected void actionPerformedBtnModificar(ActionEvent arg0) {
+	}
+	protected void actionPerformedBtnConsultar(ActionEvent arg0) {
+	}
+	protected void actionPerformedBtnEliminar(ActionEvent arg0) {
+	}
+	void mensaje(String s) {
+		JOptionPane.showMessageDialog(this, s);
+	}
+	int leerCodigo() {
+		return Integer.parseInt(txtCodigo.getText().trim());
+	}
+	String leerNombre() {
+		return txtNombre.getText().trim();
+	}
+	int leerNota1() {
+		return Integer.parseInt(txtNota1.getText().trim());
+	}
+	int leerNota2() {
+		return Integer.parseInt(txtNota2.getText().trim());
+	}
+}

@@ -1,0 +1,44 @@
+package arreglos;
+
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import clase.BungalowClass;
+
+public class ArregloBungalow {
+private ArrayList<BungalowClass> bun;
+public ArregloBungalow(){
+	bun = new ArrayList<BungalowClass>();
+	cargarBungalow();
+}
+public void adicionar(BungalowClass x){
+	bun.add(x);
+}
+public int tamaño(){
+	return bun.size();
+}
+public BungalowClass obtener(int i){
+	return bun.get(i);
+}
+public BungalowClass buscar(int numeroBungalow){
+	for(int i=0;i<tamaño();i++)
+		if (obtener(i).getNumeroBungalow() ==numeroBungalow)
+			return obtener(i);
+	return null;
+}
+public void eliminar(BungalowClass x){
+	bun.remove(x);
+}
+public void grabarBungalows(){
+	try{
+		PrintWriter pw;
+		String linea;
+		BungalowClass x;
+		pw = new PrintWriter(new FileWriter("Bungalow.txt"));
+		for(int i=0;i<tamaño();i++){
+			
+		}
+	}
+}
+}

@@ -1,0 +1,155 @@
+package guis;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Bungalow extends JFrame implements ActionListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JLabel lblNmero;
+	private JTextField txtNumero;
+	private JLabel lblCategoria;
+	private JComboBox cboCategoria;
+	private JLabel lblPrecio;
+	private JTextField txtPrecio;
+	private JLabel lblEstado;
+	private JComboBox cboEstado;
+	private JButton btnAdicionar;
+	private JButton btnConsultar;
+	private JButton btnModificar;
+	private JButton btnEliminar;
+	private JScrollPane scrollPane;
+	private JTable table;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Bungalow frame = new Bungalow();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Bungalow() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		lblNmero = new JLabel("N\u00FAmero");
+		lblNmero.setBounds(10, 11, 46, 14);
+		contentPane.add(lblNmero);
+		
+		txtNumero = new JTextField();
+		txtNumero.setEditable(false);
+		txtNumero.setBounds(66, 8, 86, 20);
+		contentPane.add(txtNumero);
+		txtNumero.setColumns(10);
+		
+		lblCategoria = new JLabel("Categoria");
+		lblCategoria.setBounds(10, 36, 55, 14);
+		contentPane.add(lblCategoria);
+		
+		cboCategoria = new JComboBox();
+		cboCategoria.setModel(new DefaultComboBoxModel(new String[] {"Simple", "Doble", "Familiar"}));
+		cboCategoria.setBounds(66, 33, 86, 20);
+		contentPane.add(cboCategoria);
+		
+		lblPrecio = new JLabel("Precio");
+		lblPrecio.setBounds(10, 61, 46, 14);
+		contentPane.add(lblPrecio);
+		
+		txtPrecio = new JTextField();
+		txtPrecio.setEditable(false);
+		txtPrecio.setBounds(66, 58, 86, 20);
+		contentPane.add(txtPrecio);
+		txtPrecio.setColumns(10);
+		
+		lblEstado = new JLabel("Estado");
+		lblEstado.setBounds(10, 86, 46, 14);
+		contentPane.add(lblEstado);
+		
+		cboEstado = new JComboBox();
+		cboEstado.setModel(new DefaultComboBoxModel(new String[] {"Libre", "Ocupado"}));
+		cboEstado.setBounds(66, 83, 86, 20);
+		contentPane.add(cboEstado);
+		
+		btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.addActionListener(this);
+		btnAdicionar.setBounds(227, 7, 89, 23);
+		contentPane.add(btnAdicionar);
+		
+		btnConsultar = new JButton("Consultar");
+		btnConsultar.addActionListener(this);
+		btnConsultar.setBounds(335, 7, 89, 23);
+		contentPane.add(btnConsultar);
+		
+		btnModificar = new JButton("Modificar");
+		btnModificar.addActionListener(this);
+		btnModificar.setBounds(335, 32, 89, 23);
+		contentPane.add(btnModificar);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(this);
+		btnEliminar.setBounds(335, 57, 89, 23);
+		contentPane.add(btnEliminar);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 111, 414, 139);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		table.setFillsViewportHeight(true);
+		scrollPane.setViewportView(table);
+	}
+	public void actionPerformed(ActionEvent arg0) {
+		if (arg0.getSource() == btnEliminar) {
+			actionPerformedBtnEliminar(arg0);
+		}
+		if (arg0.getSource() == btnModificar) {
+			actionPerformedBtnModificar(arg0);
+		}
+		if (arg0.getSource() == btnConsultar) {
+			actionPerformedBtnConsultar(arg0);
+		}
+		if (arg0.getSource() == btnAdicionar) {
+			actionPerformedBtnAdicionar(arg0);
+		}
+	}
+	protected void actionPerformedBtnAdicionar(ActionEvent arg0) {
+	}
+	protected void actionPerformedBtnConsultar(ActionEvent arg0) {
+	}
+	protected void actionPerformedBtnModificar(ActionEvent arg0) {
+	}
+	protected void actionPerformedBtnEliminar(ActionEvent arg0) {
+	}
+}

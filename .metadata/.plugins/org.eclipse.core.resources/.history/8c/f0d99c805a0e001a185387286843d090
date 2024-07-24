@@ -1,0 +1,36 @@
+package arregloProd;
+
+import java.util.ArrayList;
+
+import producto.Producto;
+
+
+public class ArregloProducto {
+private ArrayList<Producto> pr;
+public ArregloProducto(){
+	pr = new ArrayList<Producto>();
+	adicionar(new Producto(20001, 50, 30, "Desayuno"));
+	adicionar(new Producto(20002, 40, 50, "Almuerzo"));
+	adicionar(new Producto(20003, 80, 80, "Cena"));
+	adicionar(new Producto(20004, 10, 90, "Snacks"));
+	adicionar(new Producto(20005, 15, 35, "Bebidas"));
+}
+public void adicionar(Producto x){
+	pr.add(x);
+}
+public int tamaño(){
+	return pr.size();
+}
+public Producto obtener(int i){
+	return pr.get(i);
+}
+public Producto buscar(int codigoPro){
+for (int i=0;i<tamaño();i++)
+	if (obtener(i).getCodigoPro()==codigoPro)
+		return obtener(i);
+return null;
+}
+public void eliminar(Producto x){
+	pr.remove(x);
+}
+}

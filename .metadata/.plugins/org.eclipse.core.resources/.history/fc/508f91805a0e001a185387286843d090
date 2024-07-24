@@ -1,0 +1,250 @@
+package guis;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import arregloProd.ArregloProducto;
+
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Producto extends JFrame implements ActionListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JLabel lblCodigo;
+	private JLabel lblPrecio;
+	private JLabel lblStock;
+	private JLabel lblDetalle;
+	private JTextField txtCodigo;
+	private JTextField txtPrecio;
+	private JTextField txtStock;
+	private JTextField txtDetalle;
+	private JButton btnAdicionar;
+	private JButton btnModificar;
+	private JButton btnConsultar;
+	private JButton btnEliminar;
+	private JScrollPane scrollPane;
+	private JTable tblTabla;
+	private DefaultTableModel modelo;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Producto frame = new Producto();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Producto() {
+		setBounds(100, 100, 696, 437);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		lblCodigo = new JLabel("Codigo");
+		lblCodigo.setBounds(10, 11, 46, 14);
+		contentPane.add(lblCodigo);
+		
+		lblPrecio = new JLabel("Precio");
+		lblPrecio.setBounds(10, 51, 46, 14);
+		contentPane.add(lblPrecio);
+		
+		lblStock = new JLabel("Stock");
+		lblStock.setBounds(10, 89, 46, 14);
+		contentPane.add(lblStock);
+		
+		lblDetalle = new JLabel("Detalle");
+		lblDetalle.setBounds(10, 134, 46, 14);
+		contentPane.add(lblDetalle);
+		
+		txtCodigo = new JTextField();
+		txtCodigo.setBounds(66, 8, 86, 20);
+		contentPane.add(txtCodigo);
+		txtCodigo.setColumns(10);
+		
+		txtPrecio = new JTextField();
+		txtPrecio.setBounds(66, 48, 86, 20);
+		contentPane.add(txtPrecio);
+		txtPrecio.setColumns(10);
+		
+		txtStock = new JTextField();
+		txtStock.setBounds(66, 86, 86, 20);
+		contentPane.add(txtStock);
+		txtStock.setColumns(10);
+		
+		txtDetalle = new JTextField();
+		txtDetalle.setBounds(66, 131, 86, 20);
+		contentPane.add(txtDetalle);
+		txtDetalle.setColumns(10);
+		
+		btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.addActionListener(this);
+		btnAdicionar.setBounds(446, 7, 89, 23);
+		contentPane.add(btnAdicionar);
+		
+		btnModificar = new JButton("Modificar");
+		btnModificar.addActionListener(this);
+		btnModificar.setBounds(581, 7, 89, 23);
+		contentPane.add(btnModificar);
+		
+		btnConsultar = new JButton("Consultar");
+		btnConsultar.addActionListener(this);
+		btnConsultar.setBounds(581, 47, 89, 23);
+		contentPane.add(btnConsultar);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(this);
+		btnEliminar.setBounds(581, 85, 89, 23);
+		contentPane.add(btnEliminar);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 159, 660, 228);
+		contentPane.add(scrollPane);
+		
+		tblTabla = new JTable();
+		scrollPane.setViewportView(tblTabla);
+		tblTabla = new JTable();
+		tblTabla.setFillsViewportHeight(true);
+		scrollPane.setViewportView(tblTabla);
+	
+		modelo = new DefaultTableModel();
+		modelo.addColumn("Código");
+		modelo.addColumn("Nombre");
+		modelo.addColumn("Apellidos");
+		modelo.addColumn("DNI");
+		tblTabla.setModel(modelo);
+		
+		listar();	
+	}
+	ArregloProducto pp=new ArregloProducto();
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnEliminar) {
+			actionPerformedBtnEliminar(e);
+		}
+		if (e.getSource() == btnConsultar) {
+			actionPerformedBtnConsultar(e);
+		}
+		if (e.getSource() == btnModificar) {
+			actionPerformedBtnModificar(e);
+		}
+		if (e.getSource() == btnAdicionar) {
+			actionPerformedBtnAdicionar(e);
+		}
+	}
+	protected void actionPerformedBtnAdicionar(ActionEvent e) {
+		int codigo = leerCodigo();
+		if (pp.buscar(codigo) == null) {
+			double precio = leerPrecio();
+			int stock = leerStock();
+			String detalle = leerDetalle();
+			producto.Producto nuevo = new producto.Producto(codigo,stock,precio,detalle);
+			pp.adicionar(nuevo);
+			listar();
+		}
+		else
+			mensaje("el CÓDIGO ya existe");
+		limpieza();
+	}
+	protected void actionPerformedBtnModificar(ActionEvent e) {
+		int codigo = leerCodigo();
+		producto.Producto x = pp.buscar(codigo);
+		if (x != null) {
+			double precio = leerPrecio();
+			int stock = leerStock();
+			String detalle = leerDetalle();
+			x.setPrecioUni(precio);;
+			x.setStock(stock);;
+			x.setDetalle(detalle);;
+			listar();
+		}
+		else
+			mensaje("el CÓDIGO no existe");
+		limpieza();
+	}
+	protected void actionPerformedBtnConsultar(ActionEvent e) {
+		int codigo = leerCodigo();
+		producto.Producto x = pp.buscar(codigo);
+		if (x != null) {
+			txtPrecio.setText(""+x.getPrecioUni());
+			txtStock.setText("" + x.getStock());
+			txtDetalle.setText(x.getDetalle());
+			txtCodigo.requestFocus();
+		}
+		else {
+			mensaje("el CÓDIGO no existe");
+			limpieza();
+			}
+	}
+	protected void actionPerformedBtnEliminar(ActionEvent e) {
+		int codigo = leerCodigo();
+		producto.Producto x = pp.buscar(codigo);
+		if (x != null) {
+			pp.eliminar(x);
+			listar();
+		}
+		else
+			mensaje("el CÓDIGO no existe");
+		limpieza();
+	}
+	void limpieza() {
+		txtCodigo.setText("");
+		txtPrecio.setText("");
+		txtStock.setText("");
+		txtDetalle.setText("");
+		txtCodigo.requestFocus();
+	}	
+	void listar() {
+		modelo.setRowCount(0);
+		for (int i=0; i<pp.tamaño(); i++) {
+			Object[] fila = { pp.obtener(i).getCodigoPro(),
+					          pp.obtener(i).getPrecioUni(),
+					          pp.obtener(i).getStock(),
+					          pp.obtener(i).getDetalle(),
+			};
+			modelo.addRow(fila);
+			}
+		}
+	void mensaje(String s) {
+		JOptionPane.showMessageDialog(this, s);
+	}
+	
+	int leerCodigo() {
+		return Integer.parseInt(txtCodigo.getText().trim());
+	}
+	double leerPrecio() {
+		return Double.parseDouble(txtPrecio.getText().trim());
+	}
+	int leerStock() {
+		return Integer.parseInt(txtStock.getText().trim());
+	}
+	String leerDetalle() {
+		return txtDetalle.getText().trim();
+	}
+	
+}

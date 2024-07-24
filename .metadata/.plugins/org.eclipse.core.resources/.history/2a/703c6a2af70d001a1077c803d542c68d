@@ -1,0 +1,66 @@
+package guis;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTextPane;
+import javax.swing.JTable;
+import javax.swing.JLabel;
+
+public class GUISocio extends JDialog {
+	private JTable table;
+	private JLabel lblCodigo;
+	private JLabel lblNombre;
+	private JLabel lblApellido;
+	private JLabel lblDni;
+	private JLabel lblTelefono;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			GUISocio dialog = new GUISocio();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public GUISocio() {
+		setBounds(100, 100, 621, 418);
+		getContentPane().setLayout(null);
+		
+		table = new JTable();
+		table.setBounds(10, 191, 585, 177);
+		getContentPane().add(table);
+		
+		lblCodigo = new JLabel("Codigo");
+		lblCodigo.setBounds(10, 11, 110, 23);
+		getContentPane().add(lblCodigo);
+		
+		lblNombre = new JLabel("Nombre");
+		lblNombre.setBounds(10, 45, 110, 23);
+		getContentPane().add(lblNombre);
+		
+		lblApellido = new JLabel("Apellido");
+		lblApellido.setBounds(10, 79, 110, 23);
+		getContentPane().add(lblApellido);
+		
+		lblDni = new JLabel("DNI");
+		lblDni.setBounds(10, 113, 110, 23);
+		getContentPane().add(lblDni);
+		
+		lblTelefono = new JLabel("Telefono");
+		lblTelefono.setBounds(10, 147, 110, 23);
+		getContentPane().add(lblTelefono);
+	}
+}

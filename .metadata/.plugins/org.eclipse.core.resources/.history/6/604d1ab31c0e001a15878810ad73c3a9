@@ -1,0 +1,119 @@
+package guis;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JTable;
+
+public class GUIProducto extends JDialog {
+	private JTextField txtStock;
+	private JTextField txtPrecio;
+	private JTextField txtDetallle;
+	private JTextField txtCodigo;
+	private JTable tblMostrar;
+	private JLabel lblCodigo;
+	private JLabel lblDetalle;
+	private JLabel lblPrecio;
+	private JLabel lblStock;
+	private JButton btnAdicionar;
+	private JButton btnModificar;
+	private JButton btnConsultar;
+	private JButton btnEliminar;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			GUIProducto dialog = new GUIProducto();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public GUIProducto() {
+		setBounds(100, 100, 618, 366);
+		getContentPane().setLayout(null);
+		{
+			lblCodigo = new JLabel("Codigo");
+			lblCodigo.setBounds(10, 11, 64, 23);
+			getContentPane().add(lblCodigo);
+		}
+		{
+			lblDetalle = new JLabel("Detalle ");
+			lblDetalle.setBounds(10, 45, 64, 23);
+			getContentPane().add(lblDetalle);
+		}
+		{
+			lblPrecio = new JLabel("Precio");
+			lblPrecio.setBounds(10, 79, 64, 23);
+			getContentPane().add(lblPrecio);
+		}
+		{
+			lblStock = new JLabel("Stock");
+			lblStock.setBounds(10, 113, 64, 23);
+			getContentPane().add(lblStock);
+		}
+		{
+			txtStock = new JTextField();
+			txtStock.setColumns(10);
+			txtStock.setBounds(106, 114, 86, 20);
+			getContentPane().add(txtStock);
+		}
+		{
+			txtPrecio = new JTextField();
+			txtPrecio.setColumns(10);
+			txtPrecio.setBounds(106, 80, 86, 20);
+			getContentPane().add(txtPrecio);
+		}
+		{
+			txtDetallle = new JTextField();
+			txtDetallle.setColumns(10);
+			txtDetallle.setBounds(106, 46, 86, 20);
+			getContentPane().add(txtDetallle);
+		}
+		{
+			txtCodigo = new JTextField();
+			txtCodigo.setColumns(10);
+			txtCodigo.setBounds(106, 12, 86, 20);
+			getContentPane().add(txtCodigo);
+		}
+		{
+			btnAdicionar = new JButton("Adicionar");
+			btnAdicionar.setBounds(235, 11, 89, 23);
+			getContentPane().add(btnAdicionar);
+		}
+		{
+			btnModificar = new JButton("Modificar");
+			btnModificar.setBounds(493, 11, 89, 23);
+			getContentPane().add(btnModificar);
+		}
+		{
+			btnConsultar = new JButton("Consultar");
+			btnConsultar.setBounds(493, 45, 89, 23);
+			getContentPane().add(btnConsultar);
+		}
+		{
+			btnEliminar = new JButton("Eliminar");
+			btnEliminar.setBounds(493, 79, 89, 23);
+			getContentPane().add(btnEliminar);
+		}
+		{
+			tblMostrar = new JTable();
+			tblMostrar.setBounds(10, 147, 585, 177);
+			getContentPane().add(tblMostrar);
+		}
+	}
+
+}

@@ -1,0 +1,36 @@
+package arregloSocio;
+
+import java.util.ArrayList;
+
+import socio.AdicionarSocio;
+
+public class ArregloSocios {
+private ArrayList<AdicionarSocio> ad;
+public ArregloSocios(){
+	ad = new ArrayList <AdicionarSocio> ();
+	adicionar(new AdicionarSocio(10001, 79412547, 945124785, "Juan", "Ortega"));
+	adicionar(new AdicionarSocio(10002, 99522548, 874512478, "Roberto", "Ordoñes"));
+	adicionar(new AdicionarSocio(10003, 99872542, 987461253, "Oscar", "Vilches"));
+	adicionar(new AdicionarSocio(10004, 59472545, 987451247, "Maria", "Mercedes"));
+	adicionar(new AdicionarSocio(10005, 89419543, 652487415, "Pedro", "Rojas"));
+	adicionar(new AdicionarSocio(10006, 69478947, 964178145, "Ana", "Gonzales"));
+}
+public void adicionar(AdicionarSocio x){
+	ad.add(x);
+}
+public int tamaño(){
+	return ad.size();
+}
+public AdicionarSocio obtener(int i){
+	return ad.get(i);
+}
+public AdicionarSocio buscar(int codigo){
+	for (int i=0;i<tamaño();i++)
+		if (obtener (i).getCodigo()==codigo)
+			return obtener(i);
+	return null;
+}
+public void eliminar(AdicionarSocio x){
+	ad.remove(x);
+}
+}

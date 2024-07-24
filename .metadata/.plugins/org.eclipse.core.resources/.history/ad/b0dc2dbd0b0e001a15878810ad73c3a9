@@ -1,0 +1,7 @@
+package socio;
+
+public class AdicionarSocio {
+private int codigo,dni,telfono;
+private String nombres,apellidos;
+
+}

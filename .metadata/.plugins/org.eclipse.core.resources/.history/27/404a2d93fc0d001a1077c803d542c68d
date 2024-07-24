@@ -1,0 +1,167 @@
+package guis;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class GUIMenu extends JFrame implements ActionListener {
+
+	private JPanel contentPane;
+	private JMenuBar menuProyecto;
+	private JMenu mnArchivo;
+	private JMenuItem mntmSalir;
+	private JMenu mnMantenimiento;
+	private JMenuItem mntmSocio;
+	private JMenuItem mntmProducto;
+	private JMenuItem mntmBungalow;
+	private JMenu mnRegistro;
+	private JMenuItem mntmIngreso;
+	private JMenuItem mntmConsumo;
+	private JMenu mnPago;
+	private JMenuItem mntmIngresosYConsumos;
+	private JMenuItem mntmHospedajes;
+	private JMenu mnReporte;
+	private JMenuItem mntmIngresosYConsumosPendientes;
+	private JMenuItem mntmIngresosYConsumosPagados;
+	private JMenuItem mntmHospedajesPendientes;
+	private JMenuItem mntmHospedajesPagados;
+	private JMenuItem mntmHospedaje;
+	private JMenu mnBoleta;
+	private JMenuItem mntmBoletas;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					GUIMenu frame = new GUIMenu();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public GUIMenu() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		menuProyecto = new JMenuBar();
+		menuProyecto.setBounds(0, 0, 434, 21);
+		contentPane.add(menuProyecto);
+		
+		mnArchivo = new JMenu("Archivo");
+		menuProyecto.add(mnArchivo);
+		
+		mntmSalir = new JMenuItem("Salir");
+		mntmSalir.addActionListener(this);
+		mnArchivo.add(mntmSalir);
+		
+		mnMantenimiento = new JMenu("Mantenimiento");
+		menuProyecto.add(mnMantenimiento);
+		
+		mntmSocio = new JMenuItem("Socio");
+		mntmSocio.addActionListener(this);
+		mnMantenimiento.add(mntmSocio);
+		
+		mntmProducto = new JMenuItem("Producto");
+		mntmProducto.addActionListener(this);
+		mnMantenimiento.add(mntmProducto);
+		
+		mntmBungalow = new JMenuItem("Bungalow");
+		mntmBungalow.addActionListener(this);
+		mnMantenimiento.add(mntmBungalow);
+		
+		mnRegistro = new JMenu("Registro");
+		menuProyecto.add(mnRegistro);
+		
+		mntmIngreso = new JMenuItem("Ingreso");
+		mnRegistro.add(mntmIngreso);
+		
+		mntmConsumo = new JMenuItem("Consumo");
+		mnRegistro.add(mntmConsumo);
+		
+		mntmHospedaje = new JMenuItem("Hospedaje");
+		mnRegistro.add(mntmHospedaje);
+		
+		mnPago = new JMenu("Pago");
+		menuProyecto.add(mnPago);
+		
+		mntmIngresosYConsumos = new JMenuItem("Ingresos y consumos");
+		mnPago.add(mntmIngresosYConsumos);
+		
+		mntmHospedajes = new JMenuItem("Hospedajes");
+		mnPago.add(mntmHospedajes);
+		
+		mnReporte = new JMenu("Reporte");
+		menuProyecto.add(mnReporte);
+		
+		mntmIngresosYConsumosPendientes = new JMenuItem("Ingresos y consumos pendientes");
+		mnReporte.add(mntmIngresosYConsumosPendientes);
+		
+		mntmIngresosYConsumosPagados = new JMenuItem("Ingresos y consumos pagados");
+		mnReporte.add(mntmIngresosYConsumosPagados);
+		
+		mntmHospedajesPendientes = new JMenuItem("Hospedajes pendientes");
+		mnReporte.add(mntmHospedajesPendientes);
+		
+		mntmHospedajesPagados = new JMenuItem("Hospedajes pagados");
+		mnReporte.add(mntmHospedajesPagados);
+		
+		mnBoleta = new JMenu("Boleta");
+		menuProyecto.add(mnBoleta);
+		
+		mntmBoletas = new JMenuItem("Boletas");
+		mnBoleta.add(mntmBoletas);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmBungalow) {
+			actionPerformedMntmBungalow(e);
+		}
+		if (e.getSource() == mntmProducto) {
+			actionPerformedMntmProducto(e);
+		}
+		if (e.getSource() == mntmSalir) {
+			actionPerformedMntmSalir(e);
+		}
+		if (e.getSource() == mntmSocio) {
+			actionPerformedMntmSocio(e);
+		}
+	}
+	protected void actionPerformedMntmSocio(ActionEvent e) {
+		GUISocio gsocio=new GUISocio();
+		gsocio.setLocationRelativeTo(this);
+		gsocio.setVisible(true);
+	}
+	protected void actionPerformedMntmSalir(ActionEvent e) {
+		dispose();
+	}
+	protected void actionPerformedMntmProducto(ActionEvent e) {
+		GUIProducto gproducto=new GUIProducto();
+		gproducto.setLocationRelativeTo(this);
+		gproducto.setVisible(true);
+	}
+	protected void actionPerformedMntmBungalow(ActionEvent e) {
+	    GUIBungalow gBungalow=new GUIBungalow();
+	    gBungalow.setLocationRelativeTo(this);
+	    gBungalow.setVisible(true);
+	}
+}
